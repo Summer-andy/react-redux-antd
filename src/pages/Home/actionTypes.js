@@ -1,0 +1,2 @@
+export const CHANG_LIST='HOME/CHANGE_LIST';
+export const CHANG_LOGIN='HOME/CHANGE_LOGIN'

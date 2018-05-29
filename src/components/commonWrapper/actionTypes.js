@@ -1,0 +1,1 @@
+export const CHANG_LIST='COMMON/CHANGE_LIST';

@@ -1,0 +1,26 @@
+
+.bg{
+    float:left;
+    margin-top:-150px;
+  
+}
+
+
+.content{
+box-sizing:border-box;
+float:left;
+border:1px  solid wheat;
+}
+
+.header{
+   animation:myfirst 5s infinite; 
+}
+@keyframes myfirst{
+from {background:red;}
+to {background:yellow;}
+
+}
+
+.exit :hover{
+
+}

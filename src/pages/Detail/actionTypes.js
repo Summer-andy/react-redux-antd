@@ -1,0 +1,2 @@
+export  const CHANGE_INFO='DETAIL/CHANGE_INFO'
+export const GET_INFO='DETAIL/GET_INFO'

@@ -1,0 +1,2 @@
+export  const  GET_LINEINFO="GATEWAY/LINEINFO"
+export const GET_INFO="GATEWAY/GET_INFO"

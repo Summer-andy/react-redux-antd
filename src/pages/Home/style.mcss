@@ -1,0 +1,18 @@
+ .content{
+     text-align:center;
+     margin-top:6%;
+     margin-left:35%;
+ }
+ .content h1{
+     color:blue;
+     font-size:2vw
+ }
+ .loginform {
+  max-width: 300px;
+}
+.loginformforgot {
+  float: right;
+}
+.loginformbutton {
+  width: 100%;
+}

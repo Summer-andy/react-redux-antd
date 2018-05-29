@@ -1,0 +1,9 @@
+.header{
+    width:980px;
+    height:140px;
+   
+}
+.header img{
+    width:100%;
+    height:130px;
+}
