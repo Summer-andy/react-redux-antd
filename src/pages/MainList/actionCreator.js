@@ -1,7 +1,7 @@
 export const getChangeListAction=(list)=>({
   
     type: 'MainList/CHANGE_LIST',
-    value:list
+    value:list,
 
 })
 

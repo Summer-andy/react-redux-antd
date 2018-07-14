@@ -1,13 +1,14 @@
 const defaultState={
-    list:false
+    list:false,
 }
 
 export  default (state=defaultState,action)=>{
+ 
     switch(action.type)
     {
         case 'MainList/CHANGE_LIST':
         return {
-            list: !state.list
+            list: !state.list,
         }
       default: return state
     }   

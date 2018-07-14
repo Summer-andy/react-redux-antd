@@ -28,17 +28,16 @@ const columns = [{
     key: 'reportTime',
   }];
 
-  function onOk(value) {
-
-  }
-
+var timeStart='';
+var timeEnd='';
   axios.defaults.withCredentials = true;
  class   Detail extends Component{ 
     render(){
         return(
             <div className={styles.container}>
                  <div>
-                 <label style={{marginLeft:30}}>节点号：</label>
+                 <br />
+                 <label style={{marginLeft:50}}>节点号：</label>
                  <Select
                  defaultValue="GW001-00007-9"
                  style={{ width: 200 }}
@@ -60,27 +59,35 @@ const columns = [{
              })
          }
                </Select>
-              <label style={{ marginLeft:20}}>上报时间：</label>
+              <label style={{ marginLeft:40}}>上报时间：</label>
               <RangePicker
               showTime={{ format: 'HH:mm' }}
               format="YYYY-MM-DD HH:mm"
               placeholder={['Start Time', 'End Time']}
            
-              onOk={onOk}
+              onOk={this.onOk}
             />
-                  <Button type="primary" style={{marginLeft:20 }} icon="search" onClick={this.search}>搜索</Button>
-                  <Button type="primary" style={{marginLeft:20 }} shape="circle" icon="download" size='default' />
+                  <Button type="primary" style={{marginLeft:60 }} icon="search" onClick={this.search}>搜索</Button>
+                  <Button type="primary" style={{marginLeft:60 }} shape="circle" icon="download" size='default' />
                  </div> 
                  <br/>
                  <div className={styles.pic}>
-                 <Table columns={columns} dataSource={this.props.rows} />
+                 <Table columns={columns} dataSource={this.props.rows} loading={this.props.loading} />
                  </div>
             </div>
         )
     }
 
+onOk=(value)=>{
+
+var time1=new Date((value[0]._d).valueOf());
+var time2=new Date((value[1]._d).valueOf());
+
+timeStart=time1.toLocaleDateString().replace(/\//g, "-") + " " + time1.toTimeString().substr(0, 8);   
+timeEnd=time2.toLocaleDateString().replace(/\//g, "-") + " " + time2.toTimeString().substr(0, 8);   
+}
     handleChange=(value)=>{
-      console.log(`selected ${value}`);
+    
       nodenum=`${value}`
     }
 
@@ -90,10 +97,10 @@ const columns = [{
 
     search=()=>{
        var params=new URLSearchParams();
-       console.log(nodenum)
+  
        params.append('nodeMark',nodenum);
-       params.append('startTime','2012-05-23 02:03');
-       params.append('endTime','2018-05-16 02:03');
+       params.append('startTime',timeStart);
+       params.append('endTime',timeEnd);
        params.append('page',1);
        params.append('rows',300)
        var _this=this;
@@ -109,7 +116,6 @@ const columns = [{
 }
 
 const mapState= (state)=>{  
-
  return{
      ...state.detail
  }

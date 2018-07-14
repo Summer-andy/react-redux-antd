@@ -1,11 +1,18 @@
 import React ,{ Component}  from 'react'
-import { Menu, Icon, Button,Avatar } from 'antd'
+import { Menu, Icon, Avatar, Dropdown } from 'antd'
 import {connect}  from 'react-redux'
 import {browserHistory} from 'react-router'
 import * as actions from './actionCreator'
 import { bindActionCreators} from 'redux'
 import styles from './style.mcss'
 const SubMenu = Menu.SubMenu;
+const exitt = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="http://139.196.82.33">退出</a>
+    </Menu.Item>
+  </Menu>
+);
  class MainList extends Component{
    render(){
       
@@ -13,18 +20,26 @@ const SubMenu = Menu.SubMenu;
          <div>
         
         <div className={styles.bg}>  
-        <div style={{ marginLeft:'-15%'}} className={styles.content} >
+        <div  className={styles.leftnav} >
        <br/>
-        <Avatar style={{marginLeft:20}} className={styles.header} size="large" icon="github" />
+       <div className={styles.leaftnavtop}>
+        <Avatar  className={styles.header} size="large" icon="github" />
+        <br />
+  <b style={{fontSize:20,color:'black'}}>智能小瓜系统</b>
+    </div>
        <br/>
        <br/>
       <Menu
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={['0']}
         defaultOpenKeys={['sub1','sub2']}
         mode="inline"
-        theme="dark"
+        theme="light"
         inlineCollapsed={this.props.list}
       >
+      <Menu.Item key="0">
+      <Icon type="laptop" />
+      <span onClick={this.goMainPage}>首页</span>
+    </Menu.Item>
         <Menu.Item key="1">
           <Icon type="pie-chart" />
           <span onClick={this.searchTemperhi}>查询温湿度</span>
@@ -37,41 +52,47 @@ const SubMenu = Menu.SubMenu;
           <Icon type="inbox" />
           <span>查询异常</span>
         </Menu.Item>
+
+        <Menu.Item key="4">
+            <Icon type="smile-o" />
+            <span onClick={this.memorandum}>放松倾听</span>
+       </Menu.Item>
+
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>网关节点管理</span></span>}>
           <Menu.Item key="5"><span onClick={this.lookGateNode}>网关节点的信息维护</span></Menu.Item>
-          <Menu.Item key="6">实时信息和控制</Menu.Item>
-          <Menu.Item key="7">网关租用授权管理</Menu.Item>
         </SubMenu>
         
         <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>系统管理</span></span>}>
         <Menu.Item key="8" ><span onClick={this.userinfo}>用户管理</span></Menu.Item> 
         <Menu.Item key="9"><span onClick={this.unitinfo}>单位管理</span></Menu.Item>
         <Menu.Item key="10"><span onClick={this.repairsinfo}>报修信息管理</span></Menu.Item>
-        <Menu.Item key="11">网关节点的信息维护</Menu.Item>
-          <Menu.Item key="12">实时信息和控制</Menu.Item>
-          <Menu.Item key="13">网关租用授权管理</Menu.Item>
         </SubMenu>
       </Menu>
         </div>
-          <div style={{ marginLeft:8 ,width:950}} className={styles.content}>
-          <Button type="primary" onClick={this.toggleCollapsed} style={{ width:950,height:60}}>
-          <Icon style={{float:'left'}} type={ this.props.list ? 'menu-unfold' : 'menu-fold' } />
-          <Avatar className={styles.exit} size="small" icon="user" style={{ float:'right'}} />
-          <span style={{float:'right'}}>小瓜</span>
-        </Button>
+          <div  className={styles.rightnav}>
+            <div className={styles.topnav}>
+          <Icon style={{float:'left',fontSize: 25,marginLeft:'3%',cursor:'pointer'}} onClick={this.toggleCollapsed} type={ this.props.list ? 'menu-unfold' : 'menu-fold' } />
+            <Dropdown overlay={exitt}>
+            <span style={{marginLeft:'80%'}}>小瓜,欢迎你！</span>
+          </Dropdown>
+              </div>
         <br/>
-        <br/>
-        <br/>
+                   <div className={styles.rightbody}>
                   {
                       this.props.children
-                  }        
+                  }    
+                  </div>    
           </div>
         </div>
         </div>
        )
    }
-  searchTemperhi=()=>{
+
+   goMainPage=()=>{
     browserHistory.push('/detail1')
+   }
+  searchTemperhi=()=>{
+    browserHistory.push('/temperhumider')
   }
   
   searchLine=()=>{
@@ -94,6 +115,9 @@ const SubMenu = Menu.SubMenu;
   }
   lookGateNode=()=>{
     browserHistory.push('/gatenode')
+  }
+  memorandum=()=>{
+    browserHistory.push('/memorandum')
   }
 
 }

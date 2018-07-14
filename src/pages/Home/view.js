@@ -19,12 +19,11 @@ const FormItem = Form.Item;
       var _this=this;
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          var params=new URLSearchParams();
-          params.append('username',values.userName)
-          params.append('password',values.password)
-            axios({method:'post',url:'http://47.100.113.55:8080/th/user/login',data:params
+ 
+            axios({method:'post',url:'http://139.196.82.33:3000/login/cellphone?password='+values.password+'&phone='+values.userName
             }).then(function(response){
-              if(response.data.code===1){
+              console.log(response)
+              if(response.data.code===502){
             _this.props.actions.getActionLoign();
               }
               else{
@@ -41,7 +40,7 @@ const FormItem = Form.Item;
            <div className={styles.content}>
              
            <Form onSubmit={this.handleSubmit} className={styles.loginform}>
-            <h1>温湿度后台管理系统</h1>
+            <h1>网易智能小瓜系统</h1>
            <FormItem>
              {getFieldDecorator('userName', {
                rules: [{ required: true, message: 'Please input your username!' }],

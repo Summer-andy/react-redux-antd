@@ -40,7 +40,7 @@ const columns = [{
 class User extends Component{
     render(){
         return(
-          <div  style={{width:775}}>
+          <div  style={{width:1100}}>
             <Table columns={columns} dataSource={this.props.rows} />
             </div>
         )

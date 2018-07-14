@@ -8,6 +8,8 @@ import {reducer as UnitsReducer } from '../pages/UnitManager/'
 import {reducer as RepairsReducer } from '../pages/Repair/'
 import {reducer as LineReducer} from '../pages/GateWay/'
 import {reducer as GateNodeReducer} from '../pages/GatewayNodeInfoCharge/'
+import {reducer as MainShowPageReducer} from '../pages/MainShowPage/'
+import {reducer as MemorandumReducer} from '../pages/Memorandum/'
 import {  routerReducer } from 'react-router-redux'
 export default combineReducers(
     {
@@ -20,6 +22,8 @@ export default combineReducers(
        unitsinfo:UnitsReducer,
        repairsinfo:RepairsReducer,
        line:LineReducer,
-       gatenode:GateNodeReducer
+       gatenode:GateNodeReducer,
+       mainshowpage:MainShowPageReducer,
+       memorandun:MemorandumReducer
     }
 )

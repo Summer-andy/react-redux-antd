@@ -9,6 +9,8 @@ import  {View as Unit} from '../pages/UnitManager'
 import {View as Repair} from '../pages/Repair/'
 import {View as Line} from '../pages/GateWay/'
 import {View as GateNode} from '../pages/GatewayNodeInfoCharge/'
+import {View as MainShowPage} from '../pages/MainShowPage/'
+import {View as Memorandum} from '../pages/Memorandum/'
 import {Provider} from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import store from '../store/'
@@ -27,12 +29,14 @@ class App extends Component {
                <Route   path='/'  component={CommonWrapper}>
                        <IndexRoute component={Home}></IndexRoute> 
                        <Route path='detail1' component={MainList}>
-                           <IndexRoute  component={Detail}></IndexRoute>
+                           <IndexRoute  component={MainShowPage}></IndexRoute>
+                           <Route path="/temperhumider" component={Detail}></Route>
                            <Route path="/userinfo" component={User}></Route>
                            <Route path="/unitinfo" component={Unit}></Route>
                            <Route path="/repairsinfo" component={Repair}></Route>
                            <Route path="/line" component={Line}></Route>
                            <Route path="/gatenode" component={GateNode}></Route>
+                           <Route path="/memorandum" component={Memorandum}></Route>
                        </Route>  
                </Route> 
         </Router>
