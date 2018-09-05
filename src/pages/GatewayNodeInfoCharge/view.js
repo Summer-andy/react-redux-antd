@@ -125,7 +125,6 @@ Success();
         <br/>
         <h1 style={{textAlign:"center",fontSize:20}}>节点信息展示 </h1>
         <Button  type="primary" onClick={this.showModal}>增加节点</Button>
-
         <Table   pagination={{ pageSize:5}}  columns={columnschild} rowSelection={rowSelection} dataSource={datachild}/>
         <Modal
         title="增加节点信息"
